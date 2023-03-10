@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="org.example"/>
+
+    <bean name="profileRepository" class="org.example.repository.ProfileRepository"/>
+    <bean name="cardRepository" class="org.example.repository.CardRepository"/>
+    <bean name="terminalRepository" class="org.example.repository.TerminalRepository"/>
+    <bean name="transactionRepository" class="org.example.repository.TransactionRepository"/>
+    <bean name="authService" class="org.example.service.AuthService" autowire="constructor">
+    </bean>
+    <bean name="profileService" class="org.example.service.ProfileService" autowire="byType">
+    </bean>
+    <bean name="adminController" class="org.example.controller.AdminController" autowire="byName">
+    </bean>
+    <bean name="cardService" class="org.example.service.CardService" autowire="byType">
+    </bean>
+    <bean name="transactionService" class="org.example.service.TransactionService" autowire="byType">
+    </bean>
+    <bean name="terminalService" class="org.example.service.TerminalService" autowire="byType" scope="singleton">
+    </bean>
+<!--    <bean name="authController" class="org.example.controller.AuthController" autowire="byType" scope="prototype"-->
+<!--    init-method="init">-->
+<!--    </bean>-->
+    <bean name="profileController" class="org.example.controller.ProfileController" autowire="byName">
+    </bean>
+    <bean name="initDatabase" class="org.example.db.InitDataBase" autowire="byName">
+    </bean>
+</beans>
